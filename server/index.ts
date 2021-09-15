@@ -1,10 +1,25 @@
 import * as express from "express";
+import axios from 'axios';
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
+
+const routes = import('./api/routes');
 
 app.get("/", (req, res) => {
     res.send("Hello Port: " + port);
+});
+
+app.get("/cook-it", (req, res) => {
+    axios.get('https://ops.stage.fulfillment.cookittech.com/weekitems').then(result => {
+        const weekItems = result.data.result.weekItems;
+        // tslint:disable-next-line:no-console
+        console.log(weekItems);
+
+        // tslint:disable-next-line:no-console
+        console.log('dataTotal: ', weekItems.length);
+        res.send("COOK IT BOI: " + JSON.stringify(weekItems));
+    })
 });
 
 app.listen(port, () => {
