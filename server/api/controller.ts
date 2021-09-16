@@ -5,13 +5,10 @@ import itemFetchingService from '../services/itemFetchingService';
 
 const controller = {
     home: (req: Request, res: Response) => res.json("Cook-it"),
-    currentWeekItems: (req: Request, res: Response) => {
-        let items = [];
-        itemFetchingService.fetchFromCurrentWeek(items);
-        // return res.json("currentWeek")
-        return res.json(items)
-    }
+    async currentWeekItems(req: Request, res: Response) {
+        const currentWeekItems = await itemFetchingService.fetchFromCurrentWeek();
+        res.send({ currentItems: currentWeekItems})
+    },
 }
 
 export default controller;
-

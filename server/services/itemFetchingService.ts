@@ -1,34 +1,29 @@
 import { Response } from "express";
 import axios from 'axios';
-import moment from 'moment';
+import * as moment from 'moment-timezone';
 
 const itemsUrl = 'https://ops.stage.fulfillment.cookittech.com/weekitems';
 
 const itemFetchingService = {
-    fetchItems: (res: Response, next: any): void => {
-        axios.get(itemsUrl).then(result => {
-            const weekItems = result.data.result.weekItems;
-            res.send(JSON.stringify(weekItems));
-        });
+    fetchAll: async (): Promise<[]> => {
+        const response = await axios.get(itemsUrl);
+        const data = await response.data;
+
+        const items = data.result.weekItems;
+
+        return items;
     },
-    fetchFromCurrentWeek: (res: Response) => {
+    fetchFromCurrentWeek: async (): Promise<[] | never[]> => {
         const today = moment();
         const currentWeekStartDate = today.startOf('week');
-        itemFetchingService.fetchItems(res, (err: any, items: any) => {
-            if (err) {
-                res.send(err);
-            }
 
-            // tslint:disable-next-line:no-console
-            console.log('DOIN IT')
+        const items = await itemFetchingService.fetchAll();
 
-            const currentWeekItems = items.filter((item: any) =>
-                currentWeekStartDate.isSame(moment(item.deliveryWeek), 'day'));
+        const currentWeekItems = items.filter((item: any) =>
+            currentWeekStartDate.isSame(moment(item.deliveryWeek), 'day'));
 
-            res.send(JSON.stringify(currentWeekItems));
-        })
+        return currentWeekItems;
     }
 }
 
 export default itemFetchingService;
-
