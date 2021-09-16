@@ -1,10 +1,10 @@
 import axios from 'axios';
-
-const baseURL = 'http://localhost:8080';
+import { baseURL } from "../utils/utils";
 
 export default class ItemFetchingService {
 
     static fetchFromCurrentWeek = async () => {
-        return await axios.get(`${baseURL}/current-week-items`)
+        const result = await axios.get(`${baseURL}/current-week-items`)
+        return result.data.currentItems;
     }
 }
