@@ -1,6 +1,7 @@
 import * as express from "express";
-import routes from "./api/routes";
 import * as cors from "cors";
+import routes from "./api/routes";
+import logger from "./logger";
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -15,6 +16,5 @@ app.use(cors());
 routes(app);
 
 app.listen(port, () => {
-    // tslint:disable-next-line:no-console
-    console.log(`Server started at http://localhost:${port}`);
+    logger.log('success', `Server started at http://localhost:${port}`);
 })

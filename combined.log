@@ -1,0 +1,10 @@
+{"message":"Hello again distributed logs","level":"info","service":"user-service"}
+{"message":"Server started at http://localhost:8080","level":"info","service":"user-service"}
+{"message":"Server started at http://localhost:8080","level":"info","service":"user-service"}
+{"message":"Server started at http://localhost:8080","level":"info","service":"user-service"}
+{"message":"Server started at http://localhost:8080","level":"info","service":"user-service"}
+{"message":"Server started at http://localhost:8080","level":"info","service":"user-service"}
+{"level":"success","message":"Server started at http://localhost:8080"}
+[32msuccess[39m: Server started at http://localhost:8080
+[31msuccess[39m: Server started at http://localhost:8080
+[32msuccess[39m: Server started at http://localhost:8080
