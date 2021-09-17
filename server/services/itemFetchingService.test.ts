@@ -1,4 +1,5 @@
-import * as axios from 'axios';
+import axios from 'axios';
+import itemFetchingService from "./itemFetchingService";
 
 jest.mock('axios');
 
@@ -10,7 +11,7 @@ describe('itemFetchingService', () => {
                     weekItems: [
                         {
                             id: "111",
-                            deliveryWeek: "2021-09-12",
+                            deliveryWeek: "2021-09-05",
                             metadata: "",
                             item: {
                                 displayName: "",
@@ -48,14 +49,42 @@ describe('itemFetchingService', () => {
         const items = response.data.result.weekItems
 
         describe('fetchAll', () => {
-            it('should fetch all of them', () => {
-                expect(true).toBeTruthy();
+            it('should fetch all of them', async () => {
+                (axios.get as jest.Mock).mockReturnValue(response)
+                const result = await itemFetchingService.fetchAll();
+                expect(result).toEqual(items);
             })
         })
 
         describe('fetchFromCurrentWeek', () => {
-            it('should only fetch items from the current week', () => {
-                expect(true).toBeTruthy();
+            const currentWeekItems = [
+                {
+                    id: "112",
+                    deliveryWeek: "2021-09-12",
+                    metadata: "",
+                    item: {
+                        displayName: "",
+                        metaData: "",
+                        category: "",
+                        status: ""
+                    }
+                },
+                {
+                    id: "113",
+                    deliveryWeek: "2021-09-12",
+                    metadata: "",
+                    item: {
+                        displayName: "",
+                        metaData: "",
+                        category: "",
+                        status: ""
+                    }
+                }
+            ];
+            it('should only fetch items from the current week', async () => {
+                (axios.get as jest.Mock).mockReturnValue(response)
+                const result = await itemFetchingService.fetchFromCurrentWeek();
+                expect(result).toEqual(currentWeekItems);
             })
         })
     })
