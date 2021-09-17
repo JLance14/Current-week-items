@@ -1,7 +1,7 @@
 # Cook-it
 ### Current-week-items
 
-![Peek 2021-09-17 11-58](https://user-images.githubusercontent.com/29185027/133818572-031cbac6-e750-4d1b-910d-301ab5079dee.gif)
+![Peek 2021-09-17 11-59](https://user-images.githubusercontent.com/29185027/133818712-377ede6d-cd27-4561-96a3-905782330cf0.gif)
 
 #### Steps to launch application:
 ##### start server: 
