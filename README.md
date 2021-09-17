@@ -1,8 +1,7 @@
 # Cook-it
 ### Current-week-items
 
-![Screenshot from 2021-09-17 11-49-27](https://user-images.githubusercontent.com/29185027/133817423-71ac3d4b-ad91-48f9-b6b5-05fd20a08eb8.png)
-
+![Peek 2021-09-17 11-58](https://user-images.githubusercontent.com/29185027/133818572-031cbac6-e750-4d1b-910d-301ab5079dee.gif)
 
 #### Steps to launch application:
 ##### start server: 
@@ -21,5 +20,3 @@
 ##### test client:
 - Navigate to project root
 - npm run test
-
-![Peek 2021-09-17 11-56](https://user-images.githubusercontent.com/29185027/133818268-645dcb15-8f2b-4285-b0d3-201a45921958.gif)
